@@ -1,0 +1,17 @@
+/* index.css */
+
+/* Reset some basic elements */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Apply some basic styles to make sure the app takes up full height */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

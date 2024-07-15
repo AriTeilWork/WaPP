@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
@@ -22,6 +22,13 @@ const Map = ({ setCoords }) => {
 };
 
 const MyMap = ({ setCoords }) => {
+  const [markerPosition, setMarkerPosition] = React.useState([51.505, -0.09]);
+
+  const handleMapClick = (e) => {
+    setMarkerPosition([e.latlng.lat, e.latlng.lng]);
+    setCoords({ lat: e.latlng.lat, lon: e.latlng.lng });
+  };
+
   return (
     <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '450px', width: '100%', borderRadius: '20px' }}>
       <TileLayer
@@ -29,6 +36,11 @@ const MyMap = ({ setCoords }) => {
         attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
       />
       <Map setCoords={setCoords} />
+      <Marker position={markerPosition} eventHandlers={{ click: handleMapClick }}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
     </MapContainer>
   );
 };

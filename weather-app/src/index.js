@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App';  // Correct relative path
 
-// The entry point for the React application. Renders the App component into the root DOM node.
 ReactDOM.render(
   <React.StrictMode>
     <App />
